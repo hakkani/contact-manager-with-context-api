@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap');
+
+.main-content {
+    max-width: 600px;
+    margin: auto;
+}
+
+.logo {
+    font-family: 'Fascinate Inline', cursive;
+    font-size: 2em;
+}
+
+.f-logo {
+    font-family: 'Fascinate Inline', cursive;
+}
+
+.header-title {
+    font-size: 1.8em;
+    font-family: 'Fascinate Inline', cursive;
+}
