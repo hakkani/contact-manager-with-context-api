@@ -6,12 +6,10 @@ import AddContact from "./components/contacts/AddContact";
 import EditContact from "./components/contacts/EditContact";
 import Header from "./components/layout/Header";
 import About from "./components/pages/About";
-import { Provider } from "./context";
 import "./App.css";
 
 function App() {
   return (
-    <Provider>
       <Router>
         <Header branding="Contact Manager" />
         <div className="container main-content">
@@ -24,7 +22,6 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </Provider>
   );
 }
 

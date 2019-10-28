@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Consumer } from "../../context";
 import axios from "axios";
 import TextInputGroup from "../layout/TextInputGroup";
 
@@ -44,13 +43,9 @@ class AddContact extends Component {
       phone
     };
 
-    const res = await axios.post(
-      "https://jsonplaceholder.typicode.com/users/",
-      newContact
-    );
-    dispatch({ type: "ADD_CONTACT", payload: res.data });
+    // SUBMIT CONTACT //
 
-    // Clear input filed
+    // Clear State
     this.setState({
       name: "",
       email: "",
@@ -71,56 +66,49 @@ class AddContact extends Component {
     const { name, email, phone, errors } = this.state;
 
     return (
-      <Consumer>
-        {value => {
-          const { dispatch } = value;
-          return (
-            <div>
-              <div className="card my-3">
-                <div className="card-header header-title">
-                  <i className="fas fa-plus-circle"></i> Add Contact
-                </div>
-                <div className="card-body">
-                  <form onSubmit={this.onSubmit.bind(this, dispatch)}>
-                    <TextInputGroup
-                      label="Name"
-                      name="name"
-                      placeholder="Eneter Name"
-                      value={name}
-                      onChange={this.onChange}
-                      error={errors.name}
-                    />
+      <div>
+        <div className="card my-3">
+          <div className="card-header header-title">
+            <i className="fas fa-plus-circle"></i> Add Contact
+          </div>
+          <div className="card-body">
+            <form onSubmit={this.onSubmit}>
+              <TextInputGroup
+                label="Name"
+                name="name"
+                placeholder="Eneter Name"
+                value={name}
+                onChange={this.onChange}
+                error={errors.name}
+              />
 
-                    <TextInputGroup
-                      label="Email"
-                      type="email"
-                      name="email"
-                      placeholder="Eneter Email"
-                      value={email}
-                      onChange={this.onChange}
-                      error={errors.email}
-                    />
+              <TextInputGroup
+                label="Email"
+                type="email"
+                name="email"
+                placeholder="Eneter Email"
+                value={email}
+                onChange={this.onChange}
+                error={errors.email}
+              />
 
-                    <TextInputGroup
-                      label="Phone"
-                      name="phone"
-                      placeholder="Eneter Phone"
-                      value={phone}
-                      onChange={this.onChange}
-                      error={errors.phone}
-                    />
-                    <input
-                      type="submit"
-                      value="ADD CONTACT"
-                      className="btn btn-info btn-block"
-                    />
-                  </form>
-                </div>
-              </div>
-            </div>
-          );
-        }}
-      </Consumer>
+              <TextInputGroup
+                label="Phone"
+                name="phone"
+                placeholder="Eneter Phone"
+                value={phone}
+                onChange={this.onChange}
+                error={errors.phone}
+              />
+              <input
+                type="submit"
+                value="ADD CONTACT"
+                className="btn btn-info btn-block"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
     );
   }
 }
